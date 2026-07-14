@@ -5,6 +5,7 @@ import { useRealtimePoll } from '../hooks/useRealtimePoll'
 import type { Choice } from '../types/poll'
 import type { ResultCardProps, ResultPageProps } from '../types/result'
 import { Aurora, Eyebrow, Logo, ThemeButton } from './Brand'
+import { LoadingBadge } from './LoadingBadge'
 
 const resultColors = [
   { dot: 'bg-[#6240f5]', bar: 'bg-[#6240f5]' },
@@ -32,6 +33,10 @@ export const ResultPage = ({ poll, roomCode }: ResultPageProps) => {
     } catch {
       toast.error('Oyun kaydedilemedi. Lütfen tekrar dene.')
     }
+  }
+
+  if (!loaded) {
+    return <main className="grid min-h-svh place-content-center bg-[#fafaff] p-8 text-[#101132]"><div className="flex flex-col items-center gap-4"><Logo /><LoadingBadge /></div></main>
   }
 
   if (loaded && !livePoll) return <main className="grid min-h-svh place-content-center justify-items-center gap-3 bg-[#fafaff] p-8 text-center text-[#101132]"><Logo /><h1 className="mt-7 text-5xl font-extrabold tracking-[-.06em]">Bu anketi bulamadık.</h1><p className="text-[#777595]">Bağlantı eksik veya geçersiz görünüyor.</p><a className="mt-4 rounded-xl bg-gradient-to-r from-[#6a35ff] to-[#5520e9] px-5 py-3 font-bold text-white" href="/">Yeni anket oluştur</a></main>

@@ -7,6 +7,7 @@ import { Aurora, Logo, ThemeButton } from './Brand'
 import { ChoicesScreen } from './creator/ChoicesScreen'
 import { QuestionScreen } from './creator/QuestionScreen'
 import { ShareScreen } from './creator/ShareScreen'
+import { HeaderStats } from './HeaderStats'
 
 const steps: Step[] = [1, 2, 3]
 
@@ -59,12 +60,15 @@ export const Creator = () => {
 
   return <main className="relative min-h-svh overflow-hidden bg-[#fafaff] text-[#101132]">
     <Aurora />
-    <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 sm:px-10">
+    <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10">
       <Logo />
-      <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_6px_20px_rgba(62,47,130,.1)] sm:flex" aria-label={`Adım ${step} / 3`}>
-        <b className="text-xs text-[#542cff]">{step} / 3</b>{steps.map(number => <span key={number} className={`size-2 rounded-full ${number === step ? 'bg-[#542cff] ring-4 ring-[#eeeaff]' : number < step ? 'bg-[#542cff]' : 'bg-[#d8d7e5]'}`} />)}
+      <div className="flex items-center gap-2">
+        <HeaderStats />
+        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_6px_20px_rgba(62,47,130,.1)] sm:flex" aria-label={`Adım ${step} / 3`}>
+          <b className="text-xs text-[#542cff]">{step} / 3</b>{steps.map(number => <span key={number} className={`size-2 rounded-full ${number === step ? 'bg-[#542cff] ring-4 ring-[#eeeaff]' : number < step ? 'bg-[#542cff]' : 'bg-[#d8d7e5]'}`} />)}
+        </div>
+        <div className="hidden sm:block"><ThemeButton /></div>
       </div>
-      <div className="sm:hidden text-xs font-bold text-[#817d9a]">{step} / 3</div><div className="hidden sm:block"><ThemeButton /></div>
     </header>
     <section className="relative z-10 grid min-h-[calc(100svh-100px)] place-items-center px-5 pb-14 sm:px-7">
       {step === 1 && <QuestionScreen question={question} onQuestionChange={setQuestion} onNext={goToChoices} />}

@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import logo from '../assets/logo.png'
 
-export const Logo = () => <a className="inline-flex items-center gap-1.5 text-xl font-extrabold tracking-[-.07em] text-[#101132]" href="/">
-  <span className="grid size-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white shadow-[2px_2px_0_#542cff]"><img className="size-11 max-w-none object-contain" src={logo} alt="Oyliyo logosu" /></span>
+export const Logo = () => <a className="inline-flex items-center gap-1.5 text-xl font-extrabold tracking-[-.07em] text-[#5b2cff]" href="/">
+  <span className="grid size-9 -top-1 relative shrink-0 place-items-center overflow-hidden rounded-xl bg-white shadow-[2px_2px_0_#542cff]"><img className="size-11 max-w-none object-contain" src={logo} alt="Oyliyo logosu" /></span>
   Oyliyo
 </a>
 

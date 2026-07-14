@@ -11,5 +11,4 @@ export const ShareScreen = ({ question, choiceCount, url, onCopy, onEdit }: Shar
     <div className="mt-5 flex items-center gap-2.5 rounded-xl bg-[#f6f5fb] p-2 pl-3.5 text-[#5b2cff]"><Link2 size={19} /><p className="min-w-0 flex-1 truncate text-[11px] font-bold text-[#55516d]">{url}</p><button className="rounded-lg bg-gradient-to-r from-[#6a35ff] to-[#5520e9] px-3 py-2 text-xs font-bold text-white" onClick={onCopy}>Kopyala</button><a className="rounded-lg bg-white px-3 py-2 text-xs font-bold text-[#5b2cff] shadow-sm" href={url} target="_blank" rel="noreferrer">Git <ExternalLink className="ml-1 inline" size={13} /></a></div>
     <button className="mt-4 flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#6a35ff] to-[#5520e9] px-6 py-4 text-[15px] font-bold text-white shadow-[0_9px_18px_rgba(85,32,233,.24)]" onClick={onCopy}>Paylaş <Copy size={18} /></button>
   </article>
-  <button className="mt-6 rounded-xl bg-white px-6 py-3 text-[13px] font-bold text-[#3d3960] shadow-sm transition hover:text-[#5b2cff]" onClick={onEdit}>✎　Tekrar Düzenle</button>
 </div>
