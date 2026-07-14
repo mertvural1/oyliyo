@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app'
+import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
 
 const firebaseConfig = {
@@ -12,4 +13,40 @@ const firebaseConfig = {
   measurementId: 'G-FH160KSPXT',
 }
 
-export const database = getDatabase(initializeApp(firebaseConfig))
+const app = initializeApp(firebaseConfig)
+
+export const database = getDatabase(app)
+export const auth = getAuth(app)
+
+let anonymousAuthPromise: Promise<void> | null = null
+
+export const ensureAnonymousAuth = () => {
+  if (anonymousAuthPromise) return anonymousAuthPromise
+
+  if (auth.currentUser) {
+    anonymousAuthPromise = Promise.resolve()
+    return anonymousAuthPromise
+  }
+
+  anonymousAuthPromise = new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        unsubscribe()
+        resolve()
+        return
+      }
+
+      signInAnonymously(auth)
+        .then(() => {
+          unsubscribe()
+          resolve()
+        })
+        .catch(error => {
+          unsubscribe()
+          reject(error)
+        })
+    })
+  })
+
+  return anonymousAuthPromise
+}

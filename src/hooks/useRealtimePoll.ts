@@ -1,6 +1,6 @@
 import { onValue, ref, runTransaction } from 'firebase/database'
 import { useEffect, useState } from 'react'
-import { database } from '../lib/firebase'
+import { database, ensureAnonymousAuth } from '../lib/firebase'
 import type { Poll } from '../types/poll'
 
 export const useRealtimePoll = (roomCode: string, initialPoll: Poll | null) => {
@@ -8,15 +8,34 @@ export const useRealtimePoll = (roomCode: string, initialPoll: Poll | null) => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    const pollRef = ref(database, `polls/${roomCode}`)
+    let unsubscribe = () => {}
+    let isMounted = true
 
-    return onValue(pollRef, snapshot => {
-      setPoll(snapshot.val() as Poll | null)
-      setLoaded(true)
-    }, () => setLoaded(true))
+    ensureAnonymousAuth()
+      .then(() => {
+        if (!isMounted) return
+
+        const pollRef = ref(database, `polls/${roomCode}`)
+        unsubscribe = onValue(pollRef, snapshot => {
+          setPoll(snapshot.val() as Poll | null)
+          setLoaded(true)
+        }, () => {
+          if (isMounted) setLoaded(true)
+        })
+      })
+      .catch(() => {
+        if (isMounted) setLoaded(true)
+      })
+
+    return () => {
+      isMounted = false
+      unsubscribe()
+    }
   }, [roomCode])
 
   const vote = async (choiceId: string, previousChoiceId?: string) => {
+    await ensureAnonymousAuth()
+
     const result = await runTransaction(ref(database, `polls/${roomCode}/choices`), current => {
       if (!Array.isArray(current)) return current
 

@@ -1,6 +1,6 @@
 import { customAlphabet } from 'nanoid'
 import { ref, set } from 'firebase/database'
-import { database } from './firebase'
+import { database, ensureAnonymousAuth } from './firebase'
 import type { Choice, Poll } from '../types/poll'
 
 const createRoomCode = customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ23456789', 7)
@@ -28,6 +28,7 @@ const fromBase64 = (value: string) => {
 export const createPoll = async (poll: Poll) => {
   const code = createRoomCode()
 
+  await ensureAnonymousAuth()
   await set(ref(database, `polls/${code}`), poll)
 
   return code
