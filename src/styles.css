@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body,
+html.dark .bg-\[\#fafaff\] {
+  background-color: #101222 !important;
+}
+
+html.dark .bg-white,
+html.dark .bg-white\/70 {
+  background-color: #1b1e32 !important;
+}
+
+html.dark .bg-\[\#f8f7ff\],
+html.dark .bg-\[\#fafaff\] {
+  background-color: #252940 !important;
+}
+
+html.dark .text-\[\#101132\],
+html.dark .text-\[\#161634\],
+html.dark .text-\[\#262448\],
+html.dark .text-\[\#302d52\],
+html.dark .text-\[\#3d3960\] {
+  color: #f7f7ff !important;
+}
+
+html.dark .text-\[\#777595\],
+html.dark .text-\[\#817d9a\],
+html.dark .text-\[\#8582a8\],
+html.dark .text-\[\#9491ac\],
+html.dark .text-\[\#9996b1\],
+html.dark .text-\[\#9d9ab7\] {
+  color: #b9bbce !important;
+}
+
+html.dark .bg-\[\#ecebf4\] {
+  background-color: #363a52 !important;
+}
+
+html.dark .border-transparent {
+  border-color: #30354d;
+}
