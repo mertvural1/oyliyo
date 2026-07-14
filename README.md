@@ -18,6 +18,10 @@ Oyliyo, paylaşılabilir bağlantılarla gerçek zamanlı anket oluşturmayı sa
 - Tailwind CSS
 - Firebase Realtime Database
 
+## Canlı demo
+
+Vercel üzerinden yayınlanan proje: https://oyliyo.vercel.app
+
 ## Başlangıç
 
 Gerekli paketleri kurun:
