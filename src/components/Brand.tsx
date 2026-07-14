@@ -34,4 +34,4 @@ export const Aurora = () => <div className="pointer-events-none absolute inset-0
   <i className="absolute -right-20 -top-24 block size-48 rounded-full bg-[#ffdff0] opacity-60 blur-2xl" />
 </div>
 
-export const Eyebrow = ({ children }: { children: ReactNode }) => <span className="text-[11px] font-bold tracking-[.04em] text-[#8582a8]">{children}</span>
+export const Eyebrow = ({ children }: { children: ReactNode }) => <span className="text-xxs font-bold tracking-[.04em] text-[#8582a8]">{children}</span>

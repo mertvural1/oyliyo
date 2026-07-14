@@ -70,10 +70,13 @@ export const Creator = () => {
         <div className="hidden sm:block"><ThemeButton /></div>
       </div>
     </header>
-    <section className="relative z-10 grid min-h-[calc(100svh-100px)] place-items-center px-5 pb-14 sm:px-7">
+    <section className="relative z-10 grid min-h-[calc(100svh-115px)] place-items-center px-5 pb-14 sm:px-7">
       {step === 1 && <QuestionScreen question={question} onQuestionChange={setQuestion} onNext={goToChoices} />}
       {step === 2 && <ChoicesScreen choices={choices} onUpdate={updateChoice} onAdd={() => setChoices(current => [...current, createChoice()])} onRemove={removeChoice} onBack={() => setStep(1)} onPublish={publishPoll} publishing={publishing} />}
       {step === 3 && <ShareScreen question={question} choiceCount={validChoices.length} url={shareUrl} onCopy={copyLink} onEdit={() => setStep(2)} />}
     </section>
+    <footer className="relative z-10 border-t border-[#ece9ff] bg-white/70 px-4 py-3 text-center text-[12px] font-semibold tracking-[0.14em] text-[#6d6890] backdrop-blur">
+      Mert Vural
+    </footer>
   </main>
 }

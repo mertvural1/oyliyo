@@ -61,12 +61,12 @@ export const HeaderStats = () => {
   }
 
   return <div className="flex items-center gap-1">
-    <div className="flex items-center gap-1 rounded-full bg-white px-2.5 py-1.5 text-[11px] font-semibold text-[#542cff] shadow-[0_1px_3px_rgba(65,40,130,.08)] dark:text-[#542cff]">
+    <div className="flex items-center gap-1 px-2.5 py-1.5 text-xxs font-semibold dark:text-[#6d6890]">
       <span>📊</span>
       <span className="whitespace-nowrap">Toplam anket {stats.pollCount}</span>
     </div>
     <span className="h-1 w-1 rounded-full bg-[#d8d7e5]" />
-    <div className="flex items-center gap-1 rounded-full bg-white px-2.5 py-1.5 text-[11px] font-semibold text-[#6d6890] shadow-[0_1px_3px_rgba(65,40,130,.08)] dark:text-[#6d6890]">
+    <div className="flex items-center gap-1 px-2.5 py-1.5 text-xxs font-semibold dark:text-[#6d6890]">
       <span>🗳️</span>
       <span className="whitespace-nowrap">Toplam oy {stats.voteCount}</span>
     </div>
