@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 import { createChoice, createPoll, createShareUrl } from '../lib/poll'
 import type { Choice, Poll } from '../types/poll'
 import type { Step } from '../types/creator'
-import { Aurora, Logo, ThemeButton } from './Brand'
+import { Aurora, Logo } from './Brand'
 import { ChoicesScreen } from './creator/ChoicesScreen'
 import { QuestionScreen } from './creator/QuestionScreen'
 import { ShareScreen } from './creator/ShareScreen'
@@ -67,7 +67,6 @@ export const Creator = () => {
         <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_6px_20px_rgba(62,47,130,.1)] sm:flex" aria-label={`Adım ${step} / 3`}>
           <b className="text-xs text-[#542cff]">{step} / 3</b>{steps.map(number => <span key={number} className={`size-2 rounded-full ${number === step ? 'bg-[#542cff] ring-4 ring-[#eeeaff]' : number < step ? 'bg-[#542cff]' : 'bg-[#d8d7e5]'}`} />)}
         </div>
-        <div className="hidden sm:block"><ThemeButton /></div>
       </div>
     </header>
     <section className="relative z-10 grid min-h-[calc(100svh-115px)] place-items-center px-5 pb-14 sm:px-7">
@@ -76,7 +75,7 @@ export const Creator = () => {
       {step === 3 && <ShareScreen question={question} choiceCount={validChoices.length} url={shareUrl} onCopy={copyLink} onEdit={() => setStep(2)} />}
     </section>
     <footer className="relative z-10 border-t border-[#ece9ff] bg-white/70 px-4 py-3 text-center text-[12px] font-semibold tracking-[0.14em] text-[#6d6890] backdrop-blur">
-      Mert Vural
+ Development by <a href="https://www.linkedin.com/in/mert-vural-b8080563/" target="_blank" rel="noopener noreferrer" className="text-[#542cff] hover:underline">MertVural</a>
     </footer>
   </main>
 }
